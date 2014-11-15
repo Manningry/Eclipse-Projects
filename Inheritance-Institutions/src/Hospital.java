@@ -1,5 +1,5 @@
 
-public class Hospital
+public class Hospital extends Institution
 	{
 
 protected String hosptialType;
@@ -7,7 +7,7 @@ protected String specialty;
 
 public void showHospitalType()
 	{
-	System.out.println("This hospital is a...hospital that serves...peoples.");
+	System.out.println("This hospital is a....");
 	}
 
 public void showSpecialty()
