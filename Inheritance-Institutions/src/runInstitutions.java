@@ -43,7 +43,7 @@ public class runInstitutions {
 		System.out.println("");
 		
 		hospital.showHospitalType();
-		hospital.showLocation();
+		hospital.showSpecialty();
 		
 		System.out.println("");
 		
