@@ -7,13 +7,15 @@ public class CheckConversion
 	public static void main(String[] args) throws IOException
 		{
 		Scanner file = new Scanner( new File("CheckConversionTextFile.txt"));
-		
+		while(file.hasNext())
+			{
 		String amount = file.nextLine();
 		String cents ="";
 		String tens = "";
 		String hundreds= "";
 		String totalDollars = "";
 		String answerDollar = " dollars ";
+		String answerCents = " cents ";
 		String sevensPl = "";
 		String sixesPl = "";
 		String fivesPl = "";
@@ -38,8 +40,8 @@ public class CheckConversion
 		case "1":
 			switch(hundreds)
 			{
-			case "0":
 			case "1":tens = "eleven";
+			break;
 			case "2":tens = "twelve";
 			break;
 			case "3":tens = "thirteen";
@@ -81,8 +83,10 @@ public class CheckConversion
 		
 		switch(hundreds)
 		{
-		case "0":
+		case "0": hundreds = "zero";
+		break;
 		case "1":hundreds = "one";
+		break;
 		case "2":hundreds = "two";
 		break;
 		case "3":hundreds = "three";
@@ -101,6 +105,23 @@ public class CheckConversion
 		break;
 		
 		}
+		String decimal ="";
+		
+		if(hundreds.equals("zero"))
+				{
+				decimal = tens;
+				}
+		else if(tens.equals("0") && !hundreds.equals("0"))
+			{
+			decimal = hundreds;
+			if(hundreds.equals("one"))
+				{
+				answerCents = " cent ";
+				}
+			}
+		else
+		decimal = tens + " " + hundreds;
+		
 		
 		//Before Decimal 
 		
@@ -133,7 +154,7 @@ public class CheckConversion
 			break;
 			}
 			
-			System.out.println(totalDollars + answerDollar + " and " + tens+" "+ hundreds + " cents");	
+			System.out.println(totalDollars + answerDollar + "and " + decimal + answerCents);	
 		break;
 		
 		case 2:
@@ -208,7 +229,7 @@ public class CheckConversion
 		break;
 		
 		}
-		System.out.println(twosPl +" " + onesPl + answerDollar + "and " + tens+" "+ hundreds + " cents");	
+		System.out.println(twosPl +" " + onesPl + answerDollar + "and " +decimal + answerCents);	
 		
 		break;
 		
@@ -310,7 +331,7 @@ public class CheckConversion
 		
 		}
 		
-		System.out.println(threesPl + " hundred " + twosPl +" " + onesPl + answerDollar + "and " + tens+" "+ hundreds + " cents");	
+		System.out.println(threesPl + " hundred " + twosPl +" " + onesPl + answerDollar + "and "+ decimal + answerCents);	
 		
 		break;
 		
@@ -346,6 +367,8 @@ public class CheckConversion
 		
 		switch(threesPl)
 		{
+		case "0": 
+		break;
 		case "1":threesPl = "one";
 		break; 
 		case "2":threesPl = "two";
@@ -434,9 +457,288 @@ public class CheckConversion
 		break;
 		
 		}
+		System.out.println(threesPl);
+		if(threesPl.equals("0"))
+			{
+			System.out.println(foursPl + " thousand " + twosPl +" " + onesPl + answerDollar + "and " +decimal + answerCents);	
+			}
+		else
+		System.out.println(foursPl + " thousand " + threesPl + " hundred " + twosPl +" " + onesPl + answerDollar + "and " + decimal + answerCents);	
+		
 		break;
+		
 		case 5: 
+		
+		fivesPl = amount.substring(0,1);
+		foursPl = amount.substring(1,2);
+		threesPl = amount.substring(2,3);
+		twosPl = amount.substring(3,4);
+		onesPl = amount.substring(4,5);
+		
+		switch(fivesPl)
+		{
+		case "1":
+			
+		switch(foursPl)
+		{
+		case "0":fivesPl = "ten";
 		break;
+		case "1":fivesPl = "eleven";
+		break;
+		case "2":fivesPl = "twelve";
+		break;
+		case "3":fivesPl= "thirteen";
+		break;
+		case "4":fivesPl = "fourteen";
+		break;
+		case "5":fivesPl = "fifteen";
+		break;
+		case "6":fivesPl = "sixteen";
+		break;
+		case "7":fivesPl = "seventeen";
+		break;
+		case "8":fivesPl = "eighteen";
+		break;
+		case "9":fivesPl = "nineteen";
+		break;
+		}
+		break; 
+		
+		case "2":fivesPl = "twenty";
+		break;
+		case "3":fivesPl = "thirty";
+		break;
+		case "4":fivesPl = "forty";
+		break;
+		case "5":fivesPl = "fifty";
+		break;
+		case "6":fivesPl = "sixty";
+		break;
+		case "7":fivesPl = "seventy";
+		break;
+		case "8":fivesPl= "eighty";
+		break;
+		case "9":fivesPl = "ninety";
+		break;
+		
+		}
+	
+		
+		switch(foursPl)
+		{
+		case "0": 
+		break;
+		case "1":foursPl = "one";
+		break; 
+		case "2":foursPl = "two";
+		break;
+		case "3":foursPl= "three";
+		break;
+		case "4":foursPl = "four";
+		break;
+		case "5": foursPl= "five";
+		break;
+		case "6":foursPl = "six";
+		break;
+		case "7":foursPl = "seven";
+		break;
+		case "8":foursPl= "eight";
+		break;
+		case "9":foursPl = "nine";
+		break;
+		
+		}
+		
+		
+		switch(threesPl)
+		{
+		case "1":threesPl = "one";
+		break; 
+		case "2":threesPl = "two";
+		break;
+		case "3":threesPl= "three";
+		break;
+		case "4":threesPl = "four";
+		break;
+		case "5": threesPl= "five";
+		break;
+		case "6":threesPl = "six";
+		break;
+		case "7":threesPl = "seven";
+		break;
+		case "8":threesPl = "eight";
+		break;
+		case "9":threesPl = "nine";
+		break;
+		
+		}
+		
+		switch(twosPl)
+		{
+		case "1":
+			switch(onesPl)
+			{
+			case "0":twosPl = "ten";
+			break;
+			case "1":twosPl = "eleven";
+			break;
+			case "2":twosPl = "twelve";
+			break;
+			case "3":twosPl = "thirteen";
+			break;
+			case "4":twosPl = "fourteen";
+			break;
+			case "5":twosPl = "fifteen";
+			break;
+			case "6":twosPl = "sixteen";
+			break;
+			case "7":twosPl = "seventeen";
+			break;
+			case "8":twosPl = "eighteen";
+			break;
+			case "9":twosPl = "nineteen";
+			break;
+			}
+			break;
+			
+		case "2":twosPl = "twenty";
+		break;
+		case "3":twosPl = "thirty";
+		break;
+		case "4":twosPl = "forty";
+		break;
+		case "5":twosPl = "fifty";
+		break;
+		case "6":twosPl = "sixty";
+		break;
+		case "7":twosPl = "seventy";
+		break;
+		case "8":twosPl = "eighty";
+		break;
+		case "9":twosPl = "ninety";
+		break;
+		
+		}
+		
+		switch(onesPl)
+		{
+		case "1":onesPl = "one";
+		break; 
+		case "2":onesPl = "two";
+		break;
+		case "3":onesPl= "three";
+		break;
+		case "4":onesPl = "four";
+		break;
+		case "5": onesPl= "five";
+		break;
+		case "6":onesPl = "six";
+		break;
+		case "7":onesPl = "seven";
+		break;
+		case "8":onesPl = "eight";
+		break;
+		case "9":onesPl = "nine";
+		break;
+		}
+		 
+		if(fivesPl.equals("ten")|| fivesPl.equals("eleven")|| fivesPl.equals("twelve")|| fivesPl.equals("thirteen")|| fivesPl.equals("fourteen")|| fivesPl.equals("fifteen")|| fivesPl.equals("sixteen")|| fivesPl.equals("seventeen")|| fivesPl.equals("eighteen")|| fivesPl.equals("nineteen"))
+			{
+			if(threesPl.equals("0") && !twosPl.equals("0") && !onesPl.equals("0"))
+				{
+				System.out.println(fivesPl + " " + foursPl + " thousand " + twosPl +" " + onesPl + answerDollar + "and " +decimal + answerCents);	
+				}
+			else if(threesPl.equals("0") && twosPl.equals("0") && !onesPl.equals("0"))
+				{
+				System.out.println(fivesPl + " " + foursPl + " thousand " + onesPl + answerDollar + "and " +decimal + answerCents);	
+				}
+			else if(threesPl.equals("0") && twosPl.equals("0") && onesPl.equals("0"))
+				{
+				System.out.println(fivesPl + " " + foursPl + " thousand " +  answerDollar + "and " +decimal + answerCents);	
+				}
+			else if(threesPl.equals("0") && !twosPl.equals("0") && onesPl.equals("0"))
+				{
+				System.out.println(fivesPl + " " + foursPl + " thousand " +  twosPl + answerDollar + "and " +decimal + answerCents);	
+				}
+			else if(!threesPl.equals("0") && twosPl.equals("0") && !onesPl.equals("0"))
+				{
+				System.out.println(fivesPl + " " + foursPl + " thousand " + threesPl + " hundred " + onesPl + answerDollar + "and " +decimal + answerCents);	
+				}
+			else if(!threesPl.equals("0") && twosPl.equals("0") && onesPl.equals("0"))
+				{
+				System.out.println(fivesPl + " " + foursPl + " thousand " + threesPl + " hundred " + answerDollar + "and " + decimal + answerCents);	
+				}
+			
+			}
+		
+		if(!fivesPl.equals("ten")&& !fivesPl.equals("eleven")&& !fivesPl.equals("twelve")&& !fivesPl.equals("thirteen")&& !fivesPl.equals("fourteen")&& !fivesPl.equals("fifteen")&& !fivesPl.equals("sixteen")&& !fivesPl.equals("seventeen")&& !fivesPl.equals("eighteen")&& !fivesPl.equals("nineteen"))
+			{
+		 if(threesPl.equals("0") && !twosPl.equals("0") && !onesPl.equals("0"))
+			{
+			if(foursPl.equals("0"))
+				{
+				System.out.println(fivesPl  + " thousand " + twosPl +" " + onesPl + answerDollar + "and "+ decimal + answerCents);	
+				}
+			else
+			System.out.println(fivesPl + " " + foursPl + " thousand " + twosPl +" " + onesPl + answerDollar + "and " +decimal + answerCents);	
+			}
+		else if(threesPl.equals("0") && twosPl.equals("0") && !onesPl.equals("0"))
+			{
+			if(foursPl.equals("0"))
+				{
+				System.out.println(fivesPl  + " thousand " + onesPl + answerDollar + "and " + decimal + answerCents);	
+				}
+			else
+			System.out.println(fivesPl + " " + foursPl + " thousand " + onesPl + answerDollar + "and " +decimal + answerCents);	
+			}
+		else if(threesPl.equals("0") && twosPl.equals("0") && onesPl.equals("0"))
+			{
+			if(foursPl.equals("0"))
+				{
+				System.out.println(fivesPl  + " thousand " + answerDollar + "and " + decimal + answerCents);	
+				}
+			else
+			System.out.println(fivesPl + " " + foursPl + " thousand " +  answerDollar + "and " + decimal + answerCents);	
+			}
+		else if(threesPl.equals("0") && !twosPl.equals("0") && onesPl.equals("0"))
+			{
+			if(foursPl.equals("0"))
+				{
+				System.out.println(fivesPl  + " thousand " + twosPl + answerDollar + "and " + decimal + answerCents);	
+				}
+			else
+			System.out.println(fivesPl + " " + foursPl + " thousand " +  twosPl + answerDollar + "and " + decimal + answerCents);	
+			}
+		else if(!threesPl.equals("0") && twosPl.equals("0") && !onesPl.equals("0"))
+			{
+			if(foursPl.equals("0"))
+				{
+				System.out.println(fivesPl  + " thousand " + threesPl + " hundred " + onesPl + answerDollar + "and " + decimal + answerCents);	
+				}
+			else
+			System.out.println(fivesPl + " " + foursPl + " thousand " + threesPl + " hundred " + onesPl + answerDollar + "and " + decimal + answerCents);	
+			}
+		else if(!threesPl.equals("0") && twosPl.equals("0") && onesPl.equals("0"))
+			{
+			if(foursPl.equals("0"))
+				{
+				System.out.println(fivesPl  + " thousand " + threesPl + " hundred " + answerDollar + "and " + decimal + answerCents);	
+				}
+			else
+			System.out.println(fivesPl + " " + foursPl + " thousand " + threesPl + " hundred " + answerDollar + "and " + decimal + answerCents);	
+			}
+		else if(!threesPl.equals("0") && !twosPl.equals("0") && !onesPl.equals("0"))
+			{
+			if(foursPl.equals("0"))
+				{
+				System.out.println(fivesPl  + " thousand " + threesPl + " hundred " + twosPl +" " + onesPl + answerDollar + "and " + decimal + answerCents);	
+				}
+			else
+			System.out.println(fivesPl + " " + foursPl + " thousand " + threesPl + " hundred " + twosPl + " " +onesPl + answerDollar + "and " + decimal + answerCents);	
+			}
+			}
+		break;
+		
 		case 6:
 		break;
 		case 7:
@@ -448,6 +750,7 @@ public class CheckConversion
 
 			}
 		
+		}
 		}
 	
 	
