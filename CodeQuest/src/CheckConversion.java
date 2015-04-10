@@ -37,6 +37,8 @@ public class CheckConversion
 			
 		switch(tens)
 		{
+		case "0": tens = "zero";
+		break;
 		case "1":
 			switch(hundreds)
 			{
@@ -111,7 +113,11 @@ public class CheckConversion
 				{
 				decimal = tens;
 				}
-		else if(tens.equals("0") && !hundreds.equals("0"))
+		else if(hundreds.equals("zero") && tens.equals("zero"))
+			{
+			decimal = "zero";
+			}
+		else if(tens.equals("zero") && !hundreds.equals("0"))
 			{
 			decimal = hundreds;
 			if(hundreds.equals("one"))
@@ -209,6 +215,8 @@ public class CheckConversion
 		
 		switch(onesPl)
 		{
+		case "0":onesPl = "zero";
+		break;
 		case "1":onesPl = "one";
 		break; 
 		case "2":onesPl = "two";
@@ -229,6 +237,8 @@ public class CheckConversion
 		break;
 		
 		}
+		
+		
 		System.out.println(twosPl +" " + onesPl + answerDollar + "and " +decimal + answerCents);	
 		
 		break;
@@ -330,8 +340,12 @@ public class CheckConversion
 		break;
 		
 		}
-		
-		System.out.println(threesPl + " hundred " + twosPl +" " + onesPl + answerDollar + "and "+ decimal + answerCents);	
+		if(onesPl.equals("0"))
+			{
+			System.out.println(threesPl + " hundred " + twosPl + answerDollar + "and "+ decimal + answerCents);
+			}
+		else
+		System.out.println(threesPl + " hundred " + twosPl + " " + onesPl + answerDollar + "and "+ decimal + answerCents);	
 		
 		break;
 		
